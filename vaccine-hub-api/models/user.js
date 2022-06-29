@@ -38,7 +38,7 @@ class User {
     }
 
     static async register(credentials){
-        const registerFields = ["password", "first_name", "last_name", "email", "location"];
+        const registerFields = ["password", "firstName", "lastName", "email", "location"];
 
         registerFields.forEach((element) => {
             if(!credentials.hasOwnProperty(element)){
@@ -71,7 +71,7 @@ class User {
             VALUES ($1, $2, $3, $4, $5)
             RETURNING id, password, first_name, last_name, email, location, date;
             `, 
-                [hashedPassword, credentials.first_name, credentials.last_name, lowercaseEmail, credentials.location]
+                [hashedPassword, credentials.firstName, credentials.lastName, lowercaseEmail, credentials.location]
         )
 
         const user = result.rows[0];
